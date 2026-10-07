@@ -30,31 +30,31 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
 <table>
   <tr>
     <td width="33%" valign="top">
-      <h3><a href="https://github.com/LorenzoCianfe/sigilas-identity">Sigilas Identity</a></h3>
+      <h3>Sigilas Identity</h3>
       <b>Authentication Authority &amp; Discovery</b><br><br>
       Central identity and token issuance provider built on OAuth 2.0 with PKCE (S256). Enforces strict domain isolation (Gate F-02 / RFC 8707) with zero cross-product token reuse.
       <br><br>
       <code>Go 1.24 &middot; PostgreSQL &middot; Mailpit &middot; Janitor</code>
       <br><br>
-      <i>Status: Production Core / In Progress</i>
+      <i>Repository: <code>sigilas-identity</code> &middot; Private Core</i>
     </td>
     <td width="33%" valign="top">
-      <h3><a href="https://github.com/LorenzoCianfe/sigilas-send">Sigilas Send</a></h3>
+      <h3>Sigilas Send</h3>
       <b>Ephemeral Zero-Knowledge Transfer</b><br><br>
       Sovereign European alternative to Wormhole and WeTransfer for secure file delivery up to 15 GB. Client-side 4 MiB streaming AEAD chunking, URL anchor key (#key), client PoW anti-DoS, and automated physical deletion.
       <br><br>
       <code>Go &middot; Vite/TS &middot; Sharded Storage &middot; S3</code>
       <br><br>
-      <i>Status: Production Hardening (M5)</i>
+      <i>Repository: <code>sigilas-send</code> &middot; In Hardening (M5)</i>
     </td>
     <td width="33%" valign="top">
-      <h3><a href="https://github.com/LorenzoCianfe/sigilas-vault">Sigilas Vault &amp; Pass</a></h3>
+      <h3>Sigilas Vault &amp; Pass</h3>
       <b>Digital Custody &amp; 3D Physical Wallet</b><br><br>
       Zero-knowledge credential manager and international identity wallet. Argon2id key derivation, RFC 6238 TOTP engine, and interactive CSS 3D viewer with vector barcode generators (IT, FR, DE, ES, US, CN).
       <br><br>
       <code>Go &middot; IndexedDB &middot; CSS 3D &middot; SVG &middot; .pkpass</code>
       <br><br>
-      <i>Status: Feature Complete (M2)</i>
+      <i>Repository: <code>sigilas-vault</code> &middot; Feature Complete (M2)</i>
     </td>
   </tr>
   <tr>
@@ -68,22 +68,22 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
       <i>Status: Architectural Design</i>
     </td>
     <td width="33%" valign="top">
-      <h3><a href="https://github.com/LorenzoCianfe/sigilas-bank">Sigilas Bank</a></h3>
+      <h3>Sigilas Bank</h3>
       <b>Double-Entry Accounting Ledger</b><br><br>
       High-integrity core banking ledger with complete formal separation between identity credentials and the accounting party model (ADR-0037).
       <br><br>
       <code>TypeScript &middot; NestJS &middot; PostgreSQL &middot; 482 Tests</code>
       <br><br>
-      <i>Status: Phase 2 Hardened (Frozen Core)</i>
+      <i>Repository: <code>sigilas-bank</code> &middot; Frozen Core</i>
     </td>
     <td width="33%" valign="top">
-      <h3><a href="https://github.com/LorenzoCianfe/sigilas-chat">Sigilas Chat</a></h3>
+      <h3>Sigilas Chat</h3>
       <b>End-to-End Encrypted Messaging</b><br><br>
       Sovereign real-time communication platform powered by a hardened native Rust cryptographic core implementing modern MLS and Double Ratchet protocols.
       <br><br>
       <code>Rust Core &middot; MLS / Double Ratchet &middot; Baseline</code>
       <br><br>
-      <i>Status: Baseline Verified (Deferred)</i>
+      <i>Repository: <code>sigilas-chat</code> &middot; Verified Baseline</i>
     </td>
   </tr>
 </table>
@@ -103,12 +103,12 @@ Every service within the Sigilas ecosystem strictly adheres to three non-negotia
 
 <br>
 
-## Cryptographic Standards & Specifications
+## Cryptographic Standards
 
 | Primitive / Protocol | Standard Specification | Implementation Role |
 | :--- | :--- | :--- |
 | **Symmetric Cipher** | AES-256-GCM (NIST SP 800-38D) | Chunk streaming wire format (Send) & item-level encryption (Vault) |
-| **Key Derivation (KDF)** | Argon2id (RFC 9106) | Master key derivation from user credentials ($m=64\text{MB}, t=3, p=4$) |
+| **Key Derivation (KDF)** | Argon2id (RFC 9106) | Master key derivation from credentials (memory: 64 MiB, iterations: 3, parallelism: 4) |
 | **Domain Separation** | HKDF-SHA256 (RFC 5869) | Deterministic subkey generation (`AuthHash`, `VaultKey`, `HistoryKey`) |
 | **Asymmetric Cryptography** | X25519 (RFC 7748) & Ed25519 (RFC 8032) | Envelope key exchange and digital signature verification |
 | **Authentication Flow** | OAuth 2.0 PKCE (RFC 7636) & RFC 8707 | Authorization code profile with S256 challenge and audience binding |
