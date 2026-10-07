@@ -3,7 +3,7 @@
 <p align="center">
   <b>Systems Architect &amp; Founder &mdash; Sigilas Suite</b><br>
   Engineering a sovereign European ecosystem for digital identity, zero-knowledge custody, communications, and productivity.<br>
-  Strict adherence to client-side cryptography, isolated trust domains, and local-first zero-latency execution.
+  Built on client-side cryptography, isolated trust domains, and local-first zero-latency execution.
 </p>
 
 <p align="center">
@@ -23,9 +23,30 @@
 
 <br>
 
-## Suite Ecosystem
+<table>
+  <tr>
+    <td width="25%" valign="top">
+      <h3>Zero-Knowledge</h3>
+      Client-side Web Crypto API. Encryption keys and plaintext never leave the browser.
+    </td>
+    <td width="25%" valign="top">
+      <h3>Single-Player First</h3>
+      Immediate standalone utility for the individual user, avoiding network effect traps.
+    </td>
+    <td width="25%" valign="top">
+      <h3>Local-First (0 ms)</h3>
+      Instant startup from IndexedDB/SQLite with asynchronous encrypted cloud sync.
+    </td>
+    <td width="25%" valign="top">
+      <h3>Sovereign EU Cloud</h3>
+      Hosted on low-cost European VPS (Hetzner), free from ad-tech, tracking, or US cloud acts.
+    </td>
+  </tr>
+</table>
 
-Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering standalone, high-utility tools to the individual user without reliance on initial network effects, backed by mathematically verifiable zero-knowledge guarantees.
+<br>
+
+## Suite Ecosystem
 
 ### 1. Identity, Access &amp; Suite Portal
 
@@ -33,30 +54,21 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
   <tr>
     <td width="33%" valign="top">
       <h3>Sigilas Identity</h3>
-      <b>Authentication Authority &amp; Discovery</b><br><br>
-      Central identity and token issuance provider built on OAuth 2.0 with PKCE (S256). Enforces strict domain isolation (Gate F-02 / RFC 8707) with zero cross-product token reuse.
-      <br><br>
-      <code>Go 1.24 &middot; PostgreSQL &middot; Mailpit &middot; Janitor</code>
-      <br><br>
-      <i>Repository: <code>sigilas-identity</code> &middot; Core Service</i>
+      <b>Authentication Authority &amp; Discovery</b>
+      <p>Central OAuth 2.0 PKCE identity provider enforcing isolated trust domains (Gate F-02) and strict audience binding.</p>
+      <b>Status:</b> Active &middot; <code>Go</code> <code>PostgreSQL</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas One</h3>
-      <b>Unified Suite Portal &amp; Subscriptions</b><br><br>
-      Central dashboard for user profile management, cross-app quota allocation, and subscription entitlements. Strict architectural isolation between billing data and cryptographic keys.
-      <br><br>
-      <code>TypeScript &middot; React &middot; OAuth2 SSO Client</code>
-      <br><br>
-      <i>Status: Portal Orchestrator</i>
+      <b>Unified Suite Portal &amp; Subscriptions</b>
+      <p>Central dashboard for account discovery, storage quota aggregation, and billing with zero key visibility.</p>
+      <b>Status:</b> Design &middot; <code>TypeScript</code> <code>React</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Alias / Hide</h3>
-      <b>Email Masking &amp; Privacy Relay</b><br><br>
-      On-demand disposable email aliasing with two-way reverse-alias routing. Full SPF/DKIM preservation via SRS and ARC (RFC 8617) with optional client-side PGP encryption before forwarding.
-      <br><br>
-      <code>Go SMTP &middot; ARC / SRS &middot; PGP Encryption</code>
-      <br><br>
-      <i>Status: Privacy Infrastructure</i>
+      <b>Email Masking &amp; Privacy Relay</b>
+      <p>On-demand disposable email aliasing with two-way reverse routing, preserving SPF/DMARC via SRS and ARC (RFC 8617).</p>
+      <b>Status:</b> Design &middot; <code>Go SMTP</code> <code>ARC/SRS</code>
     </td>
   </tr>
 </table>
@@ -67,30 +79,21 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
   <tr>
     <td width="33%" valign="top">
       <h3>Sigilas Send</h3>
-      <b>Ephemeral Zero-Knowledge Transfer</b><br><br>
-      Sovereign European alternative to Wormhole and WeTransfer for secure file delivery up to 15 GB. Client-side 4 MiB streaming AEAD chunking, URL anchor key (#key), client PoW anti-DoS, and automated physical deletion.
-      <br><br>
-      <code>Go &middot; Vite/TS &middot; Sharded Storage &middot; S3</code>
-      <br><br>
-      <i>Repository: <code>sigilas-send</code> &middot; In Hardening (M5)</i>
+      <b>Ephemeral Zero-Knowledge Transfer</b>
+      <p>European alternative to Wormhole/WeTransfer up to 15 GB. 4 MiB streaming AEAD chunking, URL anchor key, and client PoW anti-DoS.</p>
+      <b>Status:</b> Active &middot; <code>Go</code> <code>TypeScript</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Vault &amp; Pass</h3>
-      <b>Digital Custody &amp; 3D Physical Wallet</b><br><br>
-      Zero-knowledge credential manager and international identity wallet. Argon2id key derivation, RFC 6238 TOTP engine, and interactive CSS 3D viewer with vector barcode generators (IT, FR, DE, ES, US, CN).
-      <br><br>
-      <code>Go &middot; IndexedDB &middot; CSS 3D &middot; SVG &middot; .pkpass</code>
-      <br><br>
-      <i>Repository: <code>sigilas-vault</code> &middot; Feature Complete (M2)</i>
+      <b>Digital Custody &amp; 3D Physical Wallet</b>
+      <p>Argon2id credential manager, RFC 6238 TOTP engine, and interactive CSS 3D wallet for international IDs (IT, FR, DE, ES, US, CN).</p>
+      <b>Status:</b> Active &middot; <code>Go</code> <code>IndexedDB</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Drive</h3>
-      <b>Hierarchical Encrypted Storage</b><br><br>
-      Cloud file system organized as a cryptographic tree with envelope encryption per directory/file. Go backend acts as a blind storage relay with zero visibility into plaintext content or file metadata.
-      <br><br>
-      <code>Go &middot; Envelope Encryption &middot; Blind S3</code>
-      <br><br>
-      <i>Status: Storage Foundation</i>
+      <b>Hierarchical Encrypted Storage</b>
+      <p>Cryptographic folder/file envelope tree where Go relays act as blind storage with zero visibility into filenames or content.</p>
+      <b>Status:</b> Design &middot; <code>Go</code> <code>S3-Compatible</code>
     </td>
   </tr>
 </table>
@@ -101,30 +104,21 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
   <tr>
     <td width="33%" valign="top">
       <h3>Sigilas Notes</h3>
-      <b>Encrypted Fast-Capture Notes</b><br><br>
-      Local-first private note-taking application with instant full-text search directly inside client memory. Markdown-native, zero-latency capture, and background snapshot synchronization.
-      <br><br>
-      <code>Local-First &middot; IndexedDB &middot; Fast Search</code>
-      <br><br>
-      <i>Status: Single-Player Utility</i>
+      <b>Encrypted Fast-Capture Notes</b>
+      <p>Personal note-taking with instant full-text search in client memory, Markdown support, and encrypted snapshot sync.</p>
+      <b>Status:</b> Design &middot; <code>Local-First</code> <code>IndexedDB</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Docs</h3>
-      <b>Rich-Text Document Editor</b><br><br>
-      Full-featured document processing engine based on TipTap (ProseMirror). Loads in 0 ms from local storage, operates completely offline, and synchronizes encrypted document state to Sigilas Drive.
-      <br><br>
-      <code>TipTap &middot; ProseMirror &middot; Offline-First</code>
-      <br><br>
-      <i>Status: Local-First Core</i>
+      <b>Rich-Text Document Editor</b>
+      <p>Document editor powered by TipTap (ProseMirror). Loads in 0 ms from local storage and operates completely offline.</p>
+      <b>Status:</b> Design &middot; <code>TipTap</code> <code>ProseMirror</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Sheets</h3>
-      <b>Canvas Spreadsheet Engine</b><br><br>
-      Client-side calculation and grid engine based on Canvas and WebAssembly (Univer / HyperFormula). Processes XLSX and CSV locally with zero server compute overhead or cloud leakage.
-      <br><br>
-      <code>Canvas 60fps &middot; WebAssembly &middot; Client-Side Calc</code>
-      <br><br>
-      <i>Status: Client-Side Engine</i>
+      <b>Canvas Spreadsheet Engine</b>
+      <p>Client-side formula calculation and grid engine based on Canvas and WebAssembly (Univer/HyperFormula) at zero server CPU cost.</p>
+      <b>Status:</b> Design &middot; <code>Canvas 60fps</code> <code>Wasm</code>
     </td>
   </tr>
 </table>
@@ -135,30 +129,21 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
   <tr>
     <td width="33%" valign="top">
       <h3>Sigilas Calendar</h3>
-      <b>Zero-Knowledge Schedule &amp; Events</b><br><br>
-      Private calendar compliant with RFC 5545 (iCalendar). Event titles, locations, and descriptions are encrypted client-side. Push reminders utilize blind timing tokens without exposing event data.
-      <br><br>
-      <code>RFC 5545 &middot; Blind Push Timers &middot; E2EE Events</code>
-      <br><br>
-      <i>Status: Privacy Scheduling</i>
+      <b>Zero-Knowledge Schedule &amp; Events</b>
+      <p>RFC 5545 iCalendar with client-side encrypted events and blind timed notification tokens for zero-knowledge push reminders.</p>
+      <b>Status:</b> Design &middot; <code>RFC 5545</code> <code>Blind Push</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Meet</h3>
-      <b>End-to-End Encrypted Video Conferencing</b><br><br>
-      Sovereign real-time audio/video calls powered by a Go WebRTC SFU (Pion). True E2EE achieved via browser Insertable Streams and SFrame (RFC 9605), ensuring the relay never decrypts media frames.
-      <br><br>
-      <code>Go Pion SFU &middot; Insertable Streams &middot; SFrame RFC 9605</code>
-      <br><br>
-      <i>Status: Communications Core</i>
+      <b>End-to-End Encrypted Video Calls</b>
+      <p>Go WebRTC SFU (Pion) with true E2EE achieved via browser Insertable Streams and SFrame (RFC 9605), keeping media frames unreadable to the relay.</p>
+      <b>Status:</b> Design &middot; <code>Pion SFU</code> <code>SFrame RFC 9605</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Chat</h3>
-      <b>End-to-End Encrypted Messaging</b><br><br>
-      Sovereign real-time communication platform powered by a hardened native Rust cryptographic core implementing modern MLS and Double Ratchet protocols.
-      <br><br>
-      <code>Rust Core &middot; MLS / Double Ratchet &middot; Baseline</code>
-      <br><br>
-      <i>Repository: <code>sigilas-chat</code> &middot; Verified Baseline</i>
+      <b>End-to-End Encrypted Messaging</b>
+      <p>Real-time messaging platform powered by a hardened native Rust cryptographic core implementing MLS and Double Ratchet.</p>
+      <b>Status:</b> Frozen &middot; <code>Rust Core</code> <code>MLS</code>
     </td>
   </tr>
 </table>
@@ -169,30 +154,21 @@ Sigilas is engineered around a <b>Single-Player First</b> paradigm: delivering s
   <tr>
     <td width="33%" valign="top">
       <h3>Sigilas Bank</h3>
-      <b>Double-Entry Accounting Ledger</b><br><br>
-      High-integrity core banking ledger with complete formal separation between identity credentials and the accounting party model (ADR-0037).
-      <br><br>
-      <code>TypeScript &middot; NestJS &middot; PostgreSQL &middot; 482 Tests</code>
-      <br><br>
-      <i>Repository: <code>sigilas-bank</code> &middot; Frozen Core</i>
+      <b>Double-Entry Accounting Ledger</b>
+      <p>High-integrity core banking ledger with strict accounting isolation between credentials and the party model (ADR-0037).</p>
+      <b>Status:</b> Frozen &middot; <code>NestJS</code> <code>PostgreSQL</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas Social</h3>
-      <b>Sovereign Mobile Video &amp; Interactions</b><br><br>
-      Mobile video reels, stories, and real-time interaction prototype built for iOS Safari. Maintained as an isolated research sandbox for high-performance mobile multimedia UX.
-      <br><br>
-      <code>Next.js 15 &middot; React 19 &middot; SQLite &middot; WebSockets</code>
-      <br><br>
-      <i>Status: Isolated R&amp;D Sandbox</i>
+      <b>Sovereign Mobile Video &amp; Interactions</b>
+      <p>Mobile video reels, stories, and real-time interaction prototype built for iOS Safari. Maintained as an isolated mobile UX sandbox.</p>
+      <b>Status:</b> R&amp;D &middot; <code>Next.js 15</code> <code>SQLite</code>
     </td>
     <td width="33%" valign="top">
       <h3>Sigilas AI</h3>
-      <b>Privacy-Preserving Intelligence</b><br><br>
-      Three-tier AI assistant: Tier 1 executes on-device via WebGPU (WebLLM / Transformers.js, zero server cost); Tier 2 utilizes European Confidential Computing TEEs (AMD SEV-SNP); Tier 3 offers stateless BYOK proxies.
-      <br><br>
-      <code>WebGPU On-Device &middot; Hardware TEE &middot; Private RAG</code>
-      <br><br>
-      <i>Status: Privacy AI Layer</i>
+      <b>Privacy-Preserving Intelligence</b>
+      <p>Three-tier AI assistant: On-device WebGPU (WebLLM/Transformers.js, zero server cost), European Confidential TEEs, and BYOK proxy.</p>
+      <b>Status:</b> Design &middot; <code>WebGPU</code> <code>Confidential TEE</code>
     </td>
   </tr>
 </table>
